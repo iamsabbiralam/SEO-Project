@@ -1,2 +1,0 @@
-# like view follow project
-
