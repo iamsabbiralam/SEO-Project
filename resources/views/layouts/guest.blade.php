@@ -21,7 +21,7 @@
     <meta property="og:type" content="article"/>
 
     <!--title-->
-    <title>Login - V.S.L Concepts Engagment Hub</title>
+    <title>@yield('title')</title>
 
 	<!--favicon icon-->
     <link rel="icon" href="{{ asset('img/favicon.png') }}" type="image/png" sizes="16x16">

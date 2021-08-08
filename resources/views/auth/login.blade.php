@@ -1,4 +1,5 @@
 @extends('layouts.guest')
+@section('title', 'Login - V.S.L Concepts Engagment Hub')
 
 @section('content')
 

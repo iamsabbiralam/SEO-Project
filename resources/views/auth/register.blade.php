@@ -1,77 +1,134 @@
-@extends('layouts.app')
+@extends('layouts.guest')
+@section('title', 'Register - V.S.L Concepts Engagment Hub')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+<!--hero section start-->
+    <section class="hero-section full-screen gray-light-bg">
+        <div class="container-fluid">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-12 col-md-7 col-lg-6 col-xl-8 d-none d-lg-block">
+                    <!-- Image -->
+                    <div class="bg-cover vh-100 ml-n3 gradient-overlay" style="background-image: url(img/slider-img-5.jpg);">
+                        <div class="position-absolute login-signup-content">
+                            <div class="position-relative text-white col-md-12 col-lg-7">
+                                <h2 class="text-white">Create Your Account</h2>
+                                <p>Create your new V.S.L CONCEPTS ENGAGMENT HUB account and start making money. It's 100% FREE, NO CREDIT/DEBIT card required and only takes a minute.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-5 col-lg-6 col-xl-4 px-lg-6">
+                    <div class="login-signup-wrap px-4 px-lg-5">
+                        <!-- Heading -->
+                        <h1 class="text-center mb-1">
+                            Signup
+                        </h1>
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                        <!-- Subheading -->
+                        <p class="text-muted text-center mb-5">
+                            Free access to our dashboard.
+                        </p>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                        <!-- Form -->
+                        <form class="login-signup-form" action="{{ route('register') }}" method="POST">
+                            @csrf
+                            <div class="form-group">
+                                <!-- Label -->
+                                <label class="pb-1">
+                                    Your Name
+                                </label>
+                                <!-- Input group -->
+                                <div class="input-group input-group-merge">
+                                    <div class="input-icon">
+                                        <span class="ti-user color-primary"></span>
+                                    </div>
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                            <div class="form-group">
+                                <!-- Label -->
+                                <label class="pb-1">
+                                    Email Address
+                                </label>
+                                <!-- Input group -->
+                                <div class="input-group input-group-merge">
+                                    <div class="input-icon">
+                                        <span class="ti-email color-primary"></span>
+                                    </div>
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                            <!-- Password -->
+                            <div class="form-group">
+                                <!-- Label -->
+                                <label class="pb-1">
+                                    Password
+                                </label>
+                                <!-- Input group -->
+                                <div class="input-group input-group-merge">
+                                    <div class="input-icon">
+                                        <span class="ti-lock color-primary"></span>
+                                    </div>
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            <div class="form-group">
+                                <!-- Label -->
+                                <label class="pb-1">
+                                    Confirm Password
+                                </label>
+                                <!-- Input group -->
+                                <div class="input-group input-group-merge">
+                                    <div class="input-icon">
+                                        <span class="ti-lock color-primary"></span>
+                                    </div>
+                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
+                            <div class="form-check d-flex align-items-center text-center">
+                                <input type="checkbox" class="form-check-input mt-0 mr-3" id="exampleCheck1">
+                                <label class="form-check-label small" for="exampleCheck1">I agree your <a href="#">Terms & Conditions</a></label>
                             </div>
-                        </div>
-                    </form>
+
+                            <!-- Submit -->
+                            <button class="btn btn-block secondary-solid-btn border-radius mt-4 mb-3">
+                                Sign up
+                            </button>
+
+                            <!-- Link -->
+                            <div class="text-center">
+                                <small class="text-muted text-center">
+                                    Already have an account? <a href="{{ route('login') }}">Log in</a>.
+                                </small>
+                            </div>
+
+                        </form>
+                    </div>
                 </div>
-            </div>
+            </div> <!-- / .row -->
         </div>
-    </div>
-</div>
+    </section>
+    <!--hero section end-->
 @endsection
