@@ -1,54 +1,7 @@
-<!doctype html>
-<html lang="en">
+@extends('layouts.app')
+@section('title', 'Contact Us')
 
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- SEO Meta description -->
-    <meta name="description"
-          content="">
-    <meta name="author" content="">
-
-    <!-- OG Meta Tags to improve the way the post looks when you share the page on LinkedIn, Facebook, Google+ -->
-    <meta property="og:site_name" content=""/> <!-- website name -->
-    <meta property="og:site" content=""/> <!-- website link -->
-    <meta property="og:title" content=""/> <!-- title shown in the actual shared post -->
-    <meta property="og:description" content=""/> <!-- description shown in the actual shared post -->
-    <meta property="og:image" content=""/> <!-- image link, make sure it's jpg -->
-    <meta property="og:url" content=""/> <!-- where do you want your post to link to -->
-    <meta property="og:type" content="article"/>
-
-    <!--title-->
-    <title>Services - Digital Marketing and Agency</title>
-
-    <!-- Head Global Code Include Start---------------->
-	<?php include("assets/head-include.php") ?>
-    <!-- Head Global Code Include End---------------->
-
-</head>
-<body>
-
-<!--loader start-->
-<div id="preloader">
-    <div class="loader1">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-</div>
-<!--loader end-->
-
-<!-- Header Global Code Include Start-------------->
-    <?php include("assets/header.php") ?>
-<!-- Header Global Code Include End---------------->
-
-<!--body content wrap start-->
-<div class="main">
+@section('content')
 
     <!--header section start-->
     <section class="hero-section ptb-100 gradient-overlay"
@@ -357,47 +310,4 @@
     </div>
     <!--client section end-->
 
-
-</div>
-<!--body content wrap end-->
-
-<!-- Footer Global Code Include Start-------------->
-    <?php include("assets/footer.php") ?>
-<!-- Footer Global Code Include End---------------->
-
-<!--bottom to top button start-->
-<button class="scroll-top scroll-to-target" data-target="html">
-    <span class="ti-angle-up"></span>
-</button>
-<!--bottom to top button end-->
-
-<!--jQuery-->
-<script src="js/jquery-3.5.0.min.js"></script>
-<!--Popper js-->
-<script src="js/popper.min.js"></script>
-<!--Bootstrap js-->
-<script src="js/bootstrap.min.js"></script>
-<!--Magnific popup js-->
-<script src="js/jquery.magnific-popup.min.js"></script>
-<!--jquery easing js-->
-<script src="js/jquery.easing.min.js"></script>
-<!--jquery ytplayer js-->
-<script src="js/jquery.mb.YTPlayer.min.js"></script>
-<!--Isotope filter js-->
-<script src="js/mixitup.min.js"></script>
-<!--wow js-->
-<script src="js/wow.min.js"></script>
-<!--owl carousel js-->
-<script src="js/owl.carousel.min.js"></script>
-<!--countdown js-->
-<script src="js/jquery.countdown.min.js"></script>
-<!--jquery easypiechart-->
-<script src="js/jquery.easy-pie-chart.js"></script>
-<!--validator js-->
-<script src="js/validator.min.js"></script>
-<!--custom js-->
-<script src="js/scripts.js"></script>
-</body>
-
-<!-- Mirrored from digimark.themetags.com/services.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 30 Jun 2021 06:44:54 GMT -->
-</html>
+@endsection

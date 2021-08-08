@@ -193,37 +193,39 @@
                             Facebook
                         </a>
                         <ul class="sub-menu">
-                            <li><a href="buy-facebook-likes.php">Buy Facebook Likes</a></li>
-                            <li><a href="buy-facebook-followers.php">Buy Facebook Followers</a></li>
-                            <li><a href="buy-facebook-post-likes.php">Buy Facebook Post Likes</a></li>
-                            <li><a href="buy-facebook-video-views.php">Buy Facebook Video Views</a></li>
+                            <li><a href="{{ route('buy_facebook_likes') }}">Buy Facebook Likes</a></li>
+                            <li><a href="{{ route('buy_facebook_followers') }}">Buy Facebook Followers</a></li>
+                            <li><a href="{{ route('buy_facebook_share') }}">Buy Facebook Post Share</a></li>
+                            <li><a href="{{ route('buy_facebook_post_likes') }}">Buy Facebook Video Views</a></li>
                         </ul>
                     </li>
                     
                     <li>
                         <a href="#" class="dropdown-toggle">Youtube</a>
                         <ul class="sub-menu">
-                            <li><a href="buy-youtube-views.php">Buy YouTube Views</a></li>
-                            <li><a href="buy-youtube-subscribe.php">Buy YouTube Subscribe</a></li>
-                            <li><a href="buy-youtube-likes.php">Buy YouTube Video Likes</a></li>
+                            <li><a href="{{ route('buy_youtube_views') }}">Buy YouTube Views</a></li>
+                            <li><a href="{{ route('buy_youtube_subscribe') }}">Buy YouTube Subscribe</a></li>
+                            <li><a href="{{ route('buy_youtube_likes') }}">Buy YouTube Video Likes</a></li>
                         </ul>
                     </li>
                     <li>
                         <a href="#" class="dropdown-toggle">Instagram</a>
                         <ul class="sub-menu">
-                            <li><a href="buy-instagram-followers.php">Buy Instagram Followers</a></li>
-                            <li><a href="buy-instagram-likes.php">Buy Instagram Photo Likes</a></li>
+                            <li><a href="{{ route('buy_instagram_followers') }}">Buy Instagram Followers</a></li>
+                            <li><a href="{{ route('buy_instagram_likes') }}">Buy Instagram Photo Likes</a></li>
                         </ul>
                     </li>
                     <li>
                         <a href="#" class="dropdown-toggle">Tiktok</a>
                         <ul class="sub-menu">
-                            <li><a href="buy-tiktok-followers.php">Buy TikTok Followers</a></li>
-                            <li><a href="buy-tiktok-likes.php">Buy TikTok Video Likes</a></li>
-                            <li><a href="buy-tiktok-views.php">Buy TikTok Video Views</a></li>
+                            <li><a href="{{ route('buy_tiktok_followers') }}">Buy TikTok Followers</a></li>
+                            <li><a href="{{ route('buy_tiktok_likes') }}">Buy TikTok Video Likes</a></li>
+                            <li><a href="{{ route('buy_tiktok_views') }}">Buy TikTok Video Views</a></li>
                         </ul>
                     </li>
-                     @if(Auth::check("email"))
+                    <?php
+                        if(Auth::check("email")){
+                    ?>
                      <li><a href="{{ route('home') }}">Dashboard</a></li>
                      <li>
                         <a href="{{ route('logout') }}"
@@ -236,10 +238,17 @@
                             @csrf
                         </form>
                     </li>
-                    @else
+                    <?php
+                        }
+                        else{
+                    ?>
                     <li><a href="{{ route('register') }}" class="btn secondary-solid-btn check-btn">Register</a></li>
                     <li><a href="{{ route('login') }}" class="btn secondary-solid-btn check-btn">Login</a></li>
-                    @endif
+                    <?php       
+                        }
+                    ?>
+                   
+                    
                 </ul>
             </div>
         </div>

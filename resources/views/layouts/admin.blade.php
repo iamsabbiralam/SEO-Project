@@ -35,11 +35,8 @@
                 <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="dashboard" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contact</a>
+                <li>
+                    <a class="nav-link" href="{{ route('admin.home') }}" role="button">Welcome {{ Auth::user()->name }}</a>
                 </li>
             </ul>
 
@@ -72,11 +69,6 @@
                         <i class="fas fa-expand-arrows-alt"></i>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                        <i class="fas fa-th-large"></i>
-                    </a>
-                </li>
             </ul>
         </nav>
         <!-- /.navbar -->
@@ -84,7 +76,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="dashboard" class="brand-link">
+            <a href="#" class="brand-link">
                 <img src="{{ asset('dist/img/logo.png') }}" alt="Arnold Logo" class="brand-image img-circle elevation-3"
                     style="opacity: .8">
                 <span class="brand-text font-weight-light">Admin Panel</span>
@@ -92,24 +84,6 @@
 
             <!-- Sidebar -->
             <div class="sidebar">
-                <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    @php
-                    $admin = Auth::user('user_type', 'admin');
-                    $user = DB::table('users')->where('email', $admin->email)->first();
-                    @endphp
-                    <div class="image">
-                        @if(!$user->profile_photo_path)
-                        <img src="{{ asset('storage/profile-photos/dp.jpg') }}" width="100px">
-                        @else
-                        <img src="{{ asset('storage/'.$user->profile_photo_path) }}" width="100px">
-                        @endif
-                    </div>
-                    <div class="info">
-                        <a href="{{ route('profile.admin-show') }}" class="d-block">{{ $user->name }}</a>
-                    </div>
-                </div>
-
                 <!-- SidebarSearch Form -->
                 <div class="form-inline">
                     <div class="input-group" data-widget="sidebar-search">
@@ -130,7 +104,7 @@
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item menu-open">
-                            <a href="dashboard" class="nav-link active">
+                            <a href="{{ route('admin.home') }}" class="nav-link active">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Dashboard
@@ -138,53 +112,15 @@
                             </a>
                         </li>
                         <li class="nav-item menu-open">
-                            <a href="{{ route('users') }}" class="nav-link active">
+                            <a href="#" class="nav-link active">
                                 <i class="nav-icon fa fa-users" aria-hidden="true"></i>
                                 <p>
                                     User List
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item menu">
-                            <a href="{{ route('view_category') }}" class="nav-link active">
-                                <i class="nav-icon fa fa-list-alt" aria-hidden="true"></i>
-                                <p>
-                                    Categories
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item menu">
-                            <a href="{{ route('brand_view') }}" class="nav-link active">
-                                <i class="nav-icon fas fa-business-time" aria-hidden="true"></i>
-                                <p>
-                                    Brands
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item menu">
-                            <a href="{{ route('view_product') }}" class="nav-link active">
-                                <i class="nav-icon fab fa-product-hunt"></i>
-                                <p>
-                                    Products
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item menu">
-                            <a href="{{ route('view_shipping') }}" class="nav-link active">
-                                <i class="nav-icon fas fa-shipping-fast"></i>
-                                <p>
-                                    Shippings
-                                </p>
-                            </a>
-                        <li class="nav-item menu">
-                            <a href="{{ route('allpay') }}" class="nav-link active">
-                                <i class="nav-icon fas fa-dollar-sign"></i>
-                                <p>
-                                    Payement Methods
-                                </p>
-                            </a>
                         <li class="nav-item menu-open">
-                            <a href="{{ route('orders') }}" class="nav-link active">
+                            <a href="#" class="nav-link active">
                                 <i class="nav-icon fab fa-first-order"></i>
                                 <p>
                                     Order Details
@@ -192,34 +128,10 @@
                             </a>
                         </li>
                         <li class="nav-item menu-open">
-                            <a href="{{ route('admin') }}" class="nav-link active">
+                            <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-users-cog"></i>
                                 <p>
                                     Admin
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item menu-open">
-                            <a href="{{ route('trainer') }}" class="nav-link active">
-                                <i class="nav-icon fas fa-running"></i>
-                                <p>
-                                    Trainer
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item menu-open">
-                            <a href="{{ route('membershow') }}" class="nav-link active">
-                                <i class="nav-icon fas fa-user"></i>
-                                <p>
-                                    Membership
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item menu-open">
-                            <a href="{{ route('show_gallery') }}" class="nav-link active">
-                                <i class="nav-icon fas fa-image"></i>
-                                <p>
-                                    Gallery
                                 </p>
                             </a>
                         </li>
@@ -229,7 +141,7 @@
                                 <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                     this.closest('form').submit();" class="nav-link active">
                                     <i class="nav-icon fas fa-sign-out-alt"></i>
-                                    <p>
+                                    <p style="color:white">
                                         Sign Out
                                     </p>
                                 </a>
@@ -241,8 +153,11 @@
             </div>
             <!-- /.sidebar -->
         </aside>
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
         @section('container')
         @show
+        </div>
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Control sidebar content goes here -->
@@ -251,7 +166,7 @@
 
         <!-- Main Footer -->
         <footer class="main-footer">
-            <strong>&copy; All Rights Reserved by Arnold Iron Fist BD.Gym 2021</a></strong>
+            <strong>&copy; All Rights Reserved by  2021</a></strong>
             <div class="float-right d-none d-sm-inline-block">
                 <b>Version</b> 1.1.0
             </div>
