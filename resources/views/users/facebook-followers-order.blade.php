@@ -45,18 +45,21 @@
                             </div>
                             <div class="form-group">
                                 <label class="d-block mb-2 text-dark text-left">Facebook Followers *</label>
-                                <select class="form-control w-50" id="select_box">
+                                <select class="form-control w-50" id="links" name="likes">
                                     <option value="">Please Select</option>
-                                    <option value="₦6500">1000 Followers</option>
-                                    <option value="₦10000">2000 Followers</option>
-                                    <option value="₦12000">5000 Followers</option>
-                                    <option value="₦15000">10000 Followers</option>
-                                    <option value="₦16000">20000 Followers</option>
-                                    <option value="₦20000">25000 Followers</option>
-                                    <option value="₦24000">30000 Followers</option>
-                                    <option value="other">Other</option>
+                                    <option value="1000">1000 Followers</option>
+                                    <option value="2000">2000 Followers</option>
+                                    <option value="5000">5000 Followers</option>
+                                    <option value="10000">10000 Followers</option>
+                                    <option value="20000">20000 Followers</option>
+                                    <option value="25000">25000 Followers</option>
+                                    <option value="30000">30000 Followers</option>
+                                    <option value="0">Other</option>
                                 </select>
                                 
+                            </div>
+                            <div class="pay">
+
                             </div>
                             <div class="order-price mt-5">
                                 <h4 class="text-left">Price: <input class="form-control d-inline w-25 text-danger text-center" type="text" value="₦0.00" id="show_only" disabled=""></h4>
@@ -75,5 +78,60 @@
         </div>
     </section>
     <!--contact us promo end-->
+
+    
+    <script type="text/javascript">
+        jQuery(document).ready(function ()
+        {
+            jQuery('select[name="likes"]').on('change',function(){
+               var ID = jQuery(this).val();
+               if(ID == '1000'){
+                var price = "₦6500";
+               }
+               else if (ID == '2000'){
+                var price = "₦10000";
+               }
+               else if (ID == '5000'){
+                var price = "₦12000";
+               }
+               else if (ID == '10000'){
+                var price = "₦15000";
+               }
+               else if (ID == '20000'){
+                var price = "₦16000";
+               }
+               else if (ID == '25000'){
+                var price = "₦20000";
+               }
+               else if (ID == '30000'){
+                var price = "₦24000";
+               }
+
+               if(ID == '0')
+               {
+                   $('.pay').html('<div class="form-group"><label class="d-block mb-2 text-dark text-left">Any Other Likes *</label><input class="form-control w-50" type="number" name="likes" id="search" placeholder="Input likes" required></div>');
+                   $('#show_only').val(this.price);      
+               }
+                else
+               {
+                  $('#show_only').val(price);
+                  $('.pay').empty();
+               }
+            });
+        });
+    </script>
+     <script>
+        jQuery(document).ready(function ()
+        {
+            jQuery(document).on('keyup', '#search', function(){
+               var ID = (jQuery(this).val() * 2);
+               var data = "₦" + ID;
+               
+                $('#show_only').val(data);      
+            });
+        });
+
+        
+    </script>
 
 @endsection
