@@ -328,7 +328,7 @@
                                 <h4 class="text-white">Legal Info</h4>
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="about-us.php">About Us</a>
+                                        <a class="nav-link" href="{{ route('about') }}">About Us</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="#">Privacy Policy</a>
@@ -340,7 +340,7 @@
                                         <a class="nav-link" href="#">Terms of Service</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="contact-us.php">Contact Us</a>
+                                        <a class="nav-link" href="{{ route('contact') }}">Contact Us</a>
                                     </li>
                                 </ul>
                             </div>
@@ -433,60 +433,6 @@
 <script src="{{ asset('js/scripts.js') }}"></script>
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
-
-<script type="text/javascript">
-    jQuery(document).ready(function ()
-    {
-        jQuery('select[name="likes"]').on('change',function(){
-           var ID = jQuery(this).val();
-           if(ID == '1000'){
-            var price = "₦6500";
-           }
-           else if (ID == '2000'){
-            var price = "₦10000";
-           }
-           else if (ID == '5000'){
-            var price = "₦12000";
-           }
-           else if (ID == '10000'){
-            var price = "₦15000";
-           }
-           else if (ID == '20000'){
-            var price = "₦16000";
-           }
-           else if (ID == '25000'){
-            var price = "₦20000";
-           }
-           else if (ID == '30000'){
-            var price = "₦24000";
-           }
-
-           if(ID == '0')
-           {
-               $('.pay').html('<div class="form-group"><label class="d-block mb-2 text-dark text-left">Any Other Likes *</label><input class="form-control w-50" type="number" name="likes" id="search" placeholder="Input likes" required></div>');
-               $('#show_only').val(this.price);      
-           }
-            else
-           {
-              $('#show_only').val(price);
-              $('.pay').empty();
-           }
-        });
-    });
-</script>
- <script>
-    jQuery(document).ready(function ()
-    {
-        jQuery(document).on('keyup', '#search', function(){
-           var ID = (jQuery(this).val() * 2);
-           var data = "₦" + ID;
-           
-            $('#show_only').val(data);      
-        });
-    });
-
-    
-</script>
 
 <script>
     var url = 'https://wati-integration-service.clare.ai/ShopifyWidget/shopifyWidget.js?85327';

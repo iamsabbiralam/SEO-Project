@@ -40,14 +40,15 @@
                                     <th>Status</th>
                                 </tr>
 
-                                
+                                @foreach($orders as $order)
                                     <tr>                                        
-                                        <td>name</td>
-                                        <td>link</td>
-                                        <td>likes</td>
-                                        <td>price</td>
-                                        <td>status</td>
+                                        <td>{{ $order->name }}</td>
+                                        <td>{{ $order->link }}</td>
+                                        <td>{{ $order->quantity }}</td>
+                                        <td>{{ $order->price }}</td>
+                                        <td>{{ $order->status }}</td>
                                     </tr>
+                                @endforeach
                                 
                             </center>
                         </table>

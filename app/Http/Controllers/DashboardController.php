@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use App\Models\Order;
 
 class DashboardController extends Controller
 {
@@ -26,8 +27,9 @@ class DashboardController extends Controller
     {
         $user = Auth::user();
         
+        $orders = Order::where('user_id', $user->id)->get();
 
-        return view('users.dashboard', ['user'=>$user, ]);
+        return view('users.dashboard', ['user' => $user, 'orders' => $orders]);
     }
     /**
      * Show the admin dashboard.

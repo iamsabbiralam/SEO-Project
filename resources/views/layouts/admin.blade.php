@@ -112,7 +112,7 @@
                             </a>
                         </li>
                         <li class="nav-item menu-open">
-                            <a href="#" class="nav-link active">
+                            <a href="{{ route('admin.user') }}" class="nav-link active">
                                 <i class="nav-icon fa fa-users" aria-hidden="true"></i>
                                 <p>
                                     User List
@@ -120,7 +120,7 @@
                             </a>
                         </li>
                         <li class="nav-item menu-open">
-                            <a href="#" class="nav-link active">
+                            <a href="{{ route('admin.order') }}" class="nav-link active">
                                 <i class="nav-icon fab fa-first-order"></i>
                                 <p>
                                     Order Details
@@ -128,7 +128,7 @@
                             </a>
                         </li>
                         <li class="nav-item menu-open">
-                            <a href="#" class="nav-link active">
+                            <a href="{{ route('admin.admin') }}" class="nav-link active">
                                 <i class="nav-icon fas fa-users-cog"></i>
                                 <p>
                                     Admin

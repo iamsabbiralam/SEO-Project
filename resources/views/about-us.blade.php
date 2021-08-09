@@ -127,7 +127,7 @@
                             </div>
                         </div>
                         <div class="action-btns mt-4">
-                            <a href="#" class="btn secondary-solid-btn mr-3">Start Now</a>
+                            <a href="{{ route('register') }}" class="btn secondary-solid-btn mr-3">Start Now</a>
                         </div>
                     </div>
                 </div>
@@ -331,7 +331,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="action-btn text-lg-right text-sm-left">
-                        <a href="contact-us.php" class="btn secondary-solid-btn">Contact With Us</a>
+                        <a href="{{ route('contact') }}" class="btn secondary-solid-btn">Contact With Us</a>
                     </div>
                 </div>
             </div>

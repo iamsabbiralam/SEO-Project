@@ -253,14 +253,14 @@
                         <p class="lead">V.S.L CONCEPTS ENGAGMENT HUB will organically help you increase your Facebook, YouTube, Instagram, and TikTok Likes, Shares, Subscribers, Views, and Followers with real active people,  NO BOTS.</p>
 
                         <div class="action-btns mt-3">
-                            <a href="sign-up.php" class="btn secondary-solid-btn">Start Free Trial (30 Instagram Post likes) </a>
-                            <a href="#" class="btn secondary-solid-btn">See Pricing Plan</a>
+                            <a href="{{ route('register') }}" class="btn secondary-solid-btn">Start Free Trial (30 Instagram Post likes) </a>
+                            <a href="{{ route('services') }}" class="btn secondary-solid-btn">See Pricing Plan</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-12 col-lg-7">
                     <div class="image-wrap pt-5">
-                        <img src="img/slider-image.png" class="img-fluid custom-width" alt="hero"/>
+                        <img src="{{ asset('img/slider-image.png') }}" class="img-fluid custom-width" alt="hero"/>
                     </div>
                 </div>
             </div>
@@ -274,7 +274,7 @@
             <div class="row">
                  <div class="col-md-6 col-lg-6">
                     <div class="about-us-img">
-                        <img src="img/5d991805179e8.png" alt="about us" class="img-fluid about-single-img">
+                        <img src="{{ asset('img/5d991805179e8.png') }}" alt="about us" class="img-fluid about-single-img">
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-6">
@@ -323,10 +323,6 @@
                                     <strong>Naira Payouts</strong>
                                 </div>
                             </div>
-                        </div>
-                        <div class="action-btns mt-4">
-                            <a href="#" class="btn secondary-solid-btn mr-3">Grow Account</a>
-                            <a href="#" class="btn secondary-outline-btn">Start Earning</a>
                         </div>
                     </div>
                 </div>
@@ -381,7 +377,7 @@
                         3. YouTube Video Likes
 
                         </p>
-                        <a href="#" target="_blank" class="mt-4 btn primary-solid-btn">See Pricing <span
+                        <a href="{{ route('services') }}" target="_blank" class="mt-4 btn primary-solid-btn">See Pricing <span
                                 class="ti-arrow-right"></span></a>
                     </div>
                 </div>
@@ -395,7 +391,7 @@
                         1. Instagram Followers<br>
                         2. Instagram Photo Likes<br><br>
                         </p>
-                        <a href="#" target="_blank" class="mt-4 btn primary-solid-btn">See Pricing <span
+                        <a href="{{ route('services') }}" target="_blank" class="mt-4 btn primary-solid-btn">See Pricing <span
                                 class="ti-arrow-right"></span></a>
                     </div>
                 </div>
@@ -412,7 +408,7 @@
                         2. TikTok Video Likes<br>
                         3. TikTok Video Views
                         </p>
-                        <a href="#" target="_blank" class="mt-4 btn primary-solid-btn">See Pricing <span
+                        <a href="{{ route('services') }}" target="_blank" class="mt-4 btn primary-solid-btn">See Pricing <span
                                 class="ti-arrow-right"></span></a>
                     </div>
                 </div>
@@ -434,7 +430,7 @@
                 <div class="free-trial-content text-white">
                     <h2 class="text-white">Earn Over ₦300,000 Monthly Completing  Simple Tasks </h2>
                     <p>With V.S.L CONCEPTS ENGAGMENT HUB, you can now earn Over ₦300,000 Monthly doing the usual things you do on social media. We pay you to like, follow, comment and subscribe to user profiles on this platform.</p>
-                    <a href="#" class="btn primary-solid-btn mt-3">Start Earning Now</a>
+                    <a href="{{ route('register') }}" class="btn primary-solid-btn mt-3">Start Earning Now</a>
                 </div>
             </div>
         </div>
@@ -673,7 +669,7 @@
                             <h5>Get your free signup bonus now!!!</h5>
                             <p>Sign up now to start earning by performing simple tasks  on social media.</p>
                             <div class="action-btns mt-3">
-                                <a href="sign-up.php" class="btn secondary-solid-btn">Register Now</a>
+                                <a href="{{ route('register') }}" class="btn secondary-solid-btn">Register Now</a>
                             </div>
                         </div>
                     </a>
@@ -868,7 +864,7 @@
                                 <li>Active friends.<span> 100% SAFE</span></li>
                                 <li>Best quality guaranteed</li>
                             </ul>
-                            <a href="#" class="btn outline-btn mb-3" target="_blank">Purchase now</a>
+                            <a href="{{ route('facebook_likes_order') }}" class="btn outline-btn mb-3" target="_blank">Purchase now</a>
                         </div>
                     </div>
                 </div>
@@ -892,7 +888,7 @@
                                 <li>Active friends.<span> 100% SAFE</span></li>
                                 <li>Minimum view duration = 1 minute</li>
                             </ul>
-                            <a href="#" class="btn outline-btn mb-3" target="_blank">Purchase now</a>
+                            <a href="{{ route('youtube_views_order') }}" class="btn outline-btn mb-3" target="_blank">Purchase now</a>
                         </div>
                     </div>
                 </div>
@@ -916,7 +912,7 @@
                                 <li>Active users.<span> 100% SAFE</span></li>
                                 <li>Best quality guaranteed</li>
                             </ul>
-                            <a href="#" class="btn outline-btn mb-3" target="_blank">Purchase now</a>
+                            <a href="{{ route('instagram_followers_order') }}" class="btn outline-btn mb-3" target="_blank">Purchase now</a>
                         </div>
                     </div>
                 </div>
@@ -1228,7 +1224,7 @@ Ibadan</h5>
                 </div>
                 <div class="col-md-4">
                     <div class="action-btn text-lg-right text-sm-left">
-                        <a href="contact-us.php" class="btn secondary-solid-btn">Contact Us</a>
+                        <a href="{{ route('contact') }}" class="btn secondary-solid-btn">Contact Us</a>
                     </div>
                 </div>
             </div>
@@ -1347,7 +1343,7 @@ Ibadan</h5>
                                 <h4 class="text-white">Legal Info</h4>
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="about-us.php">About Us</a>
+                                        <a class="nav-link" href="{{ route('about') }}">About Us</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="#">Privacy Policy</a>
@@ -1359,7 +1355,7 @@ Ibadan</h5>
                                         <a class="nav-link" href="#">Terms of Service</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="contact-us.php">Contact Us</a>
+                                        <a class="nav-link" href="{{ route('contact') }}">Contact Us</a>
                                     </li>
                                 </ul>
                             </div>

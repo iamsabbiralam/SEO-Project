@@ -31,7 +31,20 @@
                 <div class="col-md-10 col-lg-12">
                     <div class="section-heading text-white text-center mb-5">
                         <h2 class="text-left">Buy Facebook likes</h2>
-                        <form action="users/order_process.php" method="post">
+                        @if ($errors->any())
+                        &nbsp; <br><br>
+                        <center>
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </center>
+                        @endif
+                        <form action="{{ route('order') }}" method="post">
+                            @csrf
                             <input type="hidden" name="name" value="facebook_likes" required>
                             <div class="form-group">
                                 <label class="d-block mb-2 text-dark text-left">Facebook User Name *</label>
@@ -43,7 +56,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="d-block mb-2 text-dark text-left" required>Facebook Likes *</label>
-                                <select class="form-control w-50" id="likes" name="likes">
+                                <select class="form-control w-50" id="quantity" name="quantity">
                                     <option value="">Please Select</option>
                                     <option value="1000">1000 Likes</option>
                                     <option value="2000">2000 Likes</option>
@@ -52,7 +65,7 @@
                                     <option value="20000">20000 Likes</option>
                                     <option value="25000">25000 Likes</option>
                                     <option value="30000">30000 Likes</option>
-                                    <option value="0">Other</option>
+                                    <option value="other">Other</option>
                                 </select>
                                 
                             </div>
@@ -76,5 +89,61 @@
         </div>
     </section>
     <!--contact us promo end-->
+
+    <!--jQuery-->
+    <script src="{{ asset('js/jquery-3.5.0.min.js') }}"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ()
+        {
+            jQuery('select[name="quantity"]').on('change',function(){
+               var ID = jQuery(this).val();
+               if(ID == '1000'){
+                var price = "₦6500";
+               }
+               else if (ID == '2000'){
+                var price = "₦10000";
+               }
+               else if (ID == '5000'){
+                var price = "₦12000";
+               }
+               else if (ID == '10000'){
+                var price = "₦15000";
+               }
+               else if (ID == '20000'){
+                var price = "₦16000";
+               }
+               else if (ID == '25000'){
+                var price = "₦20000";
+               }
+               else if (ID == '30000'){
+                var price = "₦24000";
+               }
+
+               if(ID == 'other')
+               {
+                   $('.pay').html('<div class="form-group"><label class="d-block mb-2 text-dark text-left">Any Other Quantity *</label><input class="form-control w-50" type="number" name="quantity" id="search" placeholder="Input Likes Quantity" required></div>');
+                   $('#show_only').val(this.price);      
+               }
+                else
+               {
+                  $('#show_only').val(price);
+                  $('.pay').empty();
+               }
+            });
+        });
+    </script>
+     <script>
+        jQuery(document).ready(function ()
+        {
+            jQuery(document).on('keyup', '#search', function(){
+               var ID = (jQuery(this).val() * 2);
+               var data = "₦" + ID;
+               
+                $('#show_only').val(data);      
+            });
+        });
+
+        
+    </script>
 
 @endsection
