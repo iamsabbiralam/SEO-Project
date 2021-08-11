@@ -25,6 +25,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [DashboardController::class, 'index'])->name('home');
+Route::get('/profile', [DashboardController::class, 'profile'])->name('profile');
+Route::post('/profile', [DashboardController::class, '_profile'])->name('_profile');
+Route::post('/password', [DashboardController::class, 'password'])->name('password');
+Route::post('/delete', [DashboardController::class, 'delete'])->name('delete');
 
 Route::get('/about', [FrontController::class, 'about'])->name('about');
 Route::get('/contact', [FrontController::class, 'contact'])->name('contact');
@@ -68,7 +72,7 @@ Route::get('/youtube_views_order', [UserController::class, 'youtube_views_order'
 
 Route::post('/order', [OrderController::class, 'order'])->name('order');
 
-Route::get('admin/home', [DashboardController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
+Route::get('admin', [DashboardController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
 Route::get('admin/orders', [AdminController::class, 'orders'])->name('admin.order')->middleware('is_admin');
 Route::get('admin/users', [AdminController::class, 'users'])->name('admin.user')->middleware('is_admin');
 Route::get('admin/admins', [AdminController::class, 'admins'])->name('admin.admin')->middleware('is_admin');
