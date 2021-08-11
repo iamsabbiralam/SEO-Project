@@ -179,7 +179,7 @@
                             <li><a href="{{ route('buy_facebook_likes') }}">Buy Facebook Likes</a></li>
                             <li><a href="{{ route('buy_facebook_followers') }}">Buy Facebook Followers</a></li>
                             <li><a href="{{ route('buy_facebook_share') }}">Buy Facebook Post Share</a></li>
-                            <li><a href="{{ route('buy_facebook_post_likes') }}">Buy Facebook Video Views</a></li>
+                            <li><a href="{{ route('buy_facebook_post_likes') }}">Buy Facebook Post Likes</a></li>
                         </ul>
                     </li>
                     
@@ -206,30 +206,29 @@
                             <li><a href="{{ route('buy_tiktok_views') }}">Buy TikTok Video Views</a></li>
                         </ul>
                     </li>
-                    <?php
-                        if(Auth::check("email")){
-                    ?>
-                     <li><a href="{{ route('home') }}">Dashboard</a></li>
-                     <li>
-                        <a href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
-                                         document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
+                    @if(Auth::check("email"))
+                    <li>
+                        <a href="#" class="dropdown-toggle">{{ Auth::user()->name }}</a>
+                        <ul class="sub-menu">
+                            <li><a href="{{ route('home') }}">Dashboard</a></li>
+                            <li><a href="{{ route('home') }}">Profile</a></li>
+                            <li>
+                                <a href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </li>
+                        </ul>
                     </li>
-                    <?php
-                        }
-                        else{
-                    ?>
+                    @else
                     <li><a href="{{ route('register') }}" class="btn secondary-solid-btn check-btn">Register</a></li>
                     <li><a href="{{ route('login') }}" class="btn secondary-solid-btn check-btn">Login</a></li>
-                    <?php       
-                        }
-                    ?>
+                    @endif
                    
                     
                 </ul>

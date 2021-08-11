@@ -31,33 +31,37 @@
                 <div class="col-md-10 col-lg-12">
                     <div class="section-heading text-white text-center mb-5">
                         <h2 class="text-left">Buy Tiktok Video Views</h2>
-                        <form action="" method="">
+                        <form action="{{ route('order') }}" method="post">
+                            @csrf
+                            <input type="hidden" name="name" value="tiktok_video_views" required>
                             <div class="form-group">
-                                <label class="d-block mb-2 text-dark text-left">Tiktok Username *</label>
-                                <input class="form-control w-50" type="text" name="fb_user_name" placeholder="Enter your tiktok username">
+                                <label class="d-block mb-2 text-dark text-left">Tiktok User Name *</label>
+                                <input class="form-control w-50" type="text" name="link" placeholder="Enter your tiktok user Name" required>
                             </div>
                             <div class="form-group">
-                                <label class="d-block mb-2 text-dark text-left">Tiktok Video Views *</label>
-                                <select class="form-control w-50" id="select_box">
+                                <label class="d-block mb-2 text-dark text-left" required>Tiktok Video Views *</label>
+                                <select class="form-control w-50" id="quantity" name="quantity">
                                     <option value="">Please Select</option>
-                                    <option value="₦1000">1000 Video Views</option>
-                                    <option value="₦4800">5000 Video Views</option>
-                                    <option value="₦9000">10000 Video Views</option>
-                                    <option value="₦16000">20000 Video Views</option>
+                                    <option value="1000">1000 Video Views</option>
+                                    <option value="5000">5000 Video Views</option>
+                                    <option value="10000">10000 Video Views</option>
+                                    <option value="20000">20000 Video Views</option>
+                                    <option value="other">Other</option>
                                 </select>
                                 
                             </div>
-                            <div class="order-price mt-5">
-                                <h4 class="text-left">Price: <input class="form-control d-inline w-25 text-danger text-center" type="text" value="₦0.00" id="show_only" disabled=""></h4>
+                            <div class="pay">
+
+                            </div>
+                            <div class="form-group">
+                                <h4 class="text-left">Price: <input class="form-control d-inline w-25 text-danger text-center" type="text" name="price" value="₦0.00" id="show_only" readonly required></h4>
                             </div>
                             <div class="form-group text-left">
                                 <button type="submit" class="btn secondary-solid-btn mt-3" style="pointer-events: all; cursor: pointer;">
-                                        Order Now
-                                    </button>
+                                    Order Now
+                                </button>
                             </div>
                         </form>
-
-
                     </div>
                 </div>
             </div>
@@ -65,4 +69,50 @@
     </section>
     <!--contact us promo end-->
 
+     <!--jQuery-->
+    <script src="{{ asset('js/jquery-3.5.0.min.js') }}"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ()
+        {
+            jQuery('select[name="quantity"]').on('change',function(){
+               var ID = jQuery(this).val();
+               if(ID == '1000'){
+                var price = "₦1000";
+               }
+               else if (ID == '5000'){
+                var price = "₦5000";
+               }
+               else if (ID == '10000'){
+                var price = "₦9000";
+               }
+               else if (ID == '20000'){
+                var price = "₦18000";
+               }
+
+               if(ID == 'other')
+               {
+                   $('.pay').html('<div class="form-group"><label class="d-block mb-2 text-dark text-left">Any Other Quantity *</label><input class="form-control w-50" type="number" name="quantity" id="search" placeholder="Input Video Views Quantity" required></div>');
+                   $('#show_only').val(this.price);      
+               }
+                else
+               {
+                  $('#show_only').val(price);
+                  $('.pay').empty();
+               }
+            });
+        });
+    </script>
+     <script>
+        jQuery(document).ready(function ()
+        {
+            jQuery(document).on('keyup', '#search', function(){
+               var ID = (jQuery(this).val() * 1);
+               var data = "₦" + ID;
+               
+                $('#show_only').val(data);      
+            });
+        });
+
+        
+    </script>
 @endsection

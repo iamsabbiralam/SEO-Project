@@ -30,22 +30,20 @@
                 <div class="col-md-10 col-lg-12">
                     <div class="section-heading text-white text-center mb-5">
                         <h2 class="text-left">Buy Facebook Followers</h2>
-                        <form action="" method="">
-                            <div class="form-group">
-                                <label class="d-block mb-2 text-dark text-left">Facebook User ID *</label>
-                                <input class="form-control w-50" type="text" name="fb_user_id" placeholder="Enter your facebook user ID">
-                            </div>
+                        <form action="{{ route('order') }}" method="post">
+                            @csrf
+                            <input type="hidden" name="name" value="facebook_followers" required>
                             <div class="form-group">
                                 <label class="d-block mb-2 text-dark text-left">Facebook User Name *</label>
-                                <input class="form-control w-50" type="text" name="fb_user_name" placeholder="Enter your facebook user Name">
+                                <input class="form-control w-50" type="text" name="user_name" placeholder="Enter your facebook user Name" required>
                             </div>
                             <div class="form-group">
                                 <label class="d-block mb-2 text-dark text-left">Facebook Link *</label>
-                                <input class="form-control w-50" type="text" name="fb_user_name" placeholder="https://www.facebook.com/vslengagementhub-104330467731189/">
+                                <input class="form-control w-50" type="text" name="link" placeholder="https://www.facebook.com/vslengagementhub-104330467731189/" required>
                             </div>
                             <div class="form-group">
-                                <label class="d-block mb-2 text-dark text-left">Facebook Followers *</label>
-                                <select class="form-control w-50" id="links" name="likes">
+                                <label class="d-block mb-2 text-dark text-left" required>Facebook Followers *</label>
+                                <select class="form-control w-50" id="quantity" name="quantity">
                                     <option value="">Please Select</option>
                                     <option value="1000">1000 Followers</option>
                                     <option value="2000">2000 Followers</option>
@@ -54,15 +52,15 @@
                                     <option value="20000">20000 Followers</option>
                                     <option value="25000">25000 Followers</option>
                                     <option value="30000">30000 Followers</option>
-                                    <option value="0">Other</option>
+                                    <option value="other">Other</option>
                                 </select>
                                 
                             </div>
                             <div class="pay">
 
                             </div>
-                            <div class="order-price mt-5">
-                                <h4 class="text-left">Price: <input class="form-control d-inline w-25 text-danger text-center" type="text" value="₦0.00" id="show_only" disabled=""></h4>
+                            <div class="form-group">
+                                <h4 class="text-left">Price: <input class="form-control d-inline w-25 text-danger text-center" type="text" name="price" value="₦0.00" id="show_only" readonly required></h4>
                             </div>
                             <div class="form-group text-left">
                                 <button type="submit" class="btn secondary-solid-btn mt-3" style="pointer-events: all; cursor: pointer;">
@@ -80,10 +78,12 @@
     <!--contact us promo end-->
 
     
+     <!--jQuery-->
+    <script src="{{ asset('js/jquery-3.5.0.min.js') }}"></script>
     <script type="text/javascript">
         jQuery(document).ready(function ()
         {
-            jQuery('select[name="likes"]').on('change',function(){
+            jQuery('select[name="quantity"]').on('change',function(){
                var ID = jQuery(this).val();
                if(ID == '1000'){
                 var price = "₦6500";
@@ -107,9 +107,9 @@
                 var price = "₦24000";
                }
 
-               if(ID == '0')
+               if(ID == 'other')
                {
-                   $('.pay').html('<div class="form-group"><label class="d-block mb-2 text-dark text-left">Any Other Likes *</label><input class="form-control w-50" type="number" name="likes" id="search" placeholder="Input likes" required></div>');
+                   $('.pay').html('<div class="form-group"><label class="d-block mb-2 text-dark text-left">Any Other Quantity *</label><input class="form-control w-50" type="number" name="quantity" id="search" placeholder="Input Followers Quantity" required></div>');
                    $('#show_only').val(this.price);      
                }
                 else
@@ -124,7 +124,7 @@
         jQuery(document).ready(function ()
         {
             jQuery(document).on('keyup', '#search', function(){
-               var ID = (jQuery(this).val() * 2);
+               var ID = (jQuery(this).val() * 7);
                var data = "₦" + ID;
                
                 $('#show_only').val(data);      

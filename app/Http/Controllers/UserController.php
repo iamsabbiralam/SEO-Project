@@ -28,9 +28,9 @@ class UserController extends Controller
         return view('users.buy-facebook-share');
     }
 
-    public function buy_facebook_video_views()
+    public function buy_facebook_post_likes()
     {
-        return view('users.buy-facebook-video-views');
+        return view('users.buy-facebook-post-likes');
     }
 
     public function buy_instagram_followers()
@@ -88,14 +88,9 @@ class UserController extends Controller
         return view('users.facebook-post-likes-order');
     }
 
-    public function facebook_post_share_order()
-    {
-        return view('users.facebook-post-share-order');
-    }
-
     public function facebook_share_order()
     {
-        return view('users.facebook-share-order');
+        return view('users.facebook-post-share-order');
     }
 
     public function instagram_followers_order()

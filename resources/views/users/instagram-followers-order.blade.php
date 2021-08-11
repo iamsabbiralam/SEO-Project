@@ -31,32 +31,38 @@
                 <div class="col-md-10 col-lg-12">
                     <div class="section-heading text-white text-center mb-5">
                         <h2 class="text-left">Buy Instagram Followers</h2>
-                        <form action="" method="">
+                         <form action="{{ route('order') }}" method="post">
+                            @csrf
+                            <input type="hidden" name="name" value="Instagram_followers" required>
                             <div class="form-group">
-                                <label class="d-block mb-2 text-dark text-left">Instagram Username *</label>
-                                <input class="form-control w-50" type="text" name="fb_user_name" placeholder="Enter your instagram username">
+                                <label class="d-block mb-2 text-dark text-left">Instagram User Name *</label>
+                                <input class="form-control w-50" type="text" name="link" placeholder="Enter your instagram user Name" required>
                             </div>
                             <div class="form-group">
-                                <label class="d-block mb-2 text-dark text-left">Instagram Followers *</label>
-                                <select class="form-control w-50" id="select_box">
+                                <label class="d-block mb-2 text-dark text-left" required>Instagram Followers *</label>
+                                <select class="form-control w-50" id="quantity" name="quantity">
                                     <option value="">Please Select</option>
-                                    <option value="₦7000">1000 Followers</option>
-                                    <option value="₦12000">2000 Followers</option>
-                                    <option value="₦2000">5000 Followers</option>
-                                    <option value="₦40000">10000 Followers</option>
-                                    <option value="₦60000">20000 Followers</option>
-                                    <option value="₦150000">50000 Followers</option>
-                                    <option value="₦300000">100000 Followers</option>
+                                    <option value="1000">1000 Followers</option>
+                                    <option value="2000">2000 Followers</option>
+                                    <option value="5000">5000 Followers</option>
+                                    <option value="10000">10000 Followers</option>
+                                    <option value="20000">20000 Followers</option>
+                                    <option value="25000">25000 Followers</option>
+                                    <option value="30000">30000 Followers</option>
+                                    <option value="other">Other</option>
                                 </select>
                                 
                             </div>
-                            <div class="order-price mt-5">
-                                <h4 class="text-left">Price: <input class="form-control d-inline w-25 text-danger text-center" type="text" value="₦0.00" id="show_only" disabled=""></h4>
+                            <div class="pay">
+
+                            </div>
+                            <div class="form-group">
+                                <h4 class="text-left">Price: <input class="form-control d-inline w-25 text-danger text-center" type="text" name="price" value="₦0.00" id="show_only" readonly required></h4>
                             </div>
                             <div class="form-group text-left">
                                 <button type="submit" class="btn secondary-solid-btn mt-3" style="pointer-events: all; cursor: pointer;">
-                                        Order Now
-                                    </button>
+                                    Order Now
+                                </button>
                             </div>
                         </form>
 
@@ -67,5 +73,60 @@
         </div>
     </section>
     <!--contact us promo end-->
+     <!--jQuery-->
+    <script src="{{ asset('js/jquery-3.5.0.min.js') }}"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ()
+        {
+            jQuery('select[name="quantity"]').on('change',function(){
+               var ID = jQuery(this).val();
+               if(ID == '1000'){
+                var price = "₦6500";
+               }
+               else if (ID == '2000'){
+                var price = "₦10000";
+               }
+               else if (ID == '5000'){
+                var price = "₦12000";
+               }
+               else if (ID == '10000'){
+                var price = "₦15000";
+               }
+               else if (ID == '20000'){
+                var price = "₦16000";
+               }
+               else if (ID == '25000'){
+                var price = "₦20000";
+               }
+               else if (ID == '30000'){
+                var price = "₦24000";
+               }
+
+               if(ID == 'other')
+               {
+                   $('.pay').html('<div class="form-group"><label class="d-block mb-2 text-dark text-left">Any Other Quantity *</label><input class="form-control w-50" type="number" name="quantity" id="search" placeholder="Input Followers Quantity" required></div>');
+                   $('#show_only').val(this.price);      
+               }
+                else
+               {
+                  $('#show_only').val(price);
+                  $('.pay').empty();
+               }
+            });
+        });
+    </script>
+     <script>
+        jQuery(document).ready(function ()
+        {
+            jQuery(document).on('keyup', '#search', function(){
+               var ID = (jQuery(this).val() * 7);
+               var data = "₦" + ID;
+               
+                $('#show_only').val(data);      
+            });
+        });
+
+        
+    </script>
 
 @endsection

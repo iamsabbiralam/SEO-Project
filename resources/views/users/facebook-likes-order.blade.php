@@ -136,7 +136,7 @@
         jQuery(document).ready(function ()
         {
             jQuery(document).on('keyup', '#search', function(){
-               var ID = (jQuery(this).val() * 2);
+               var ID = (jQuery(this).val() * 7);
                var data = "₦" + ID;
                
                 $('#show_only').val(data);      

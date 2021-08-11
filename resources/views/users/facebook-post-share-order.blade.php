@@ -31,38 +31,39 @@
                 <div class="col-md-10 col-lg-12">
                     <div class="section-heading text-white text-center mb-5">
                         <h2 class="text-left">Buy Facebook Post Share</h2>
-                        <form action="" method="">
-                            <div class="form-group">
-                                <label class="d-block mb-2 text-dark text-left">Facebook User ID *</label>
-                                <input class="form-control w-50" type="text" name="fb_user_id" placeholder="Enter your facebook user ID">
-                            </div>
+                        <form action="{{ route('order') }}" method="post">
+                            @csrf
+                            <input type="hidden" name="name" value="facebook_post_share" required>
                             <div class="form-group">
                                 <label class="d-block mb-2 text-dark text-left">Facebook User Name *</label>
-                                <input class="form-control w-50" type="text" name="fb_user_name" placeholder="Enter your facebook user Name">
+                                <input class="form-control w-50" type="text" name="user_name" placeholder="Enter your facebook user Name" required>
                             </div>
                             <div class="form-group">
                                 <label class="d-block mb-2 text-dark text-left">Facebook Link *</label>
-                                <input class="form-control w-50" type="text" name="fb_user_name" placeholder="https://www.facebook.com/vslengagementhub-104330467731189/">
+                                <input class="form-control w-50" type="text" name="link" placeholder="https://www.facebook.com/vslengagementhub-104330467731189/" required>
                             </div>
                             <div class="form-group">
-                                <label class="d-block mb-2 text-dark text-left">Facebook Post Share *</label>
-                                <select class="form-control w-50" id="select_box">
+                                <label class="d-block mb-2 text-dark text-left" required>Facebook Post Share *</label>
+                                <select class="form-control w-50" id="quantity" name="quantity">
                                     <option value="">Please Select</option>
-                                    <option value="₦1500">100 Post Share</option>
-                                    <option value="₦3000">200 Post Share</option>
-                                    <option value="₦5000">300 Post Share</option>
-                                    <option value="₦8000">500 Post Share</option>
-                                    <option value="₦12000">750 Post Share</option>
-                                    <option value="₦16000">1000 Post Share</option>
-                                    <option value="₦80000">5000 Post Share</option>
-                                    <option value="₦160000">10000 Post Share</option>
-                                    <option value="₦800000">50000 Post Share</option>
-                                    <option value="₦1600000">100000 Post Share</option>
+                                    <option value="100">100 Post Share</option>
+                                    <option value="200">200 Post Share</option>
+                                    <option value="300">300 Post Share</option>
+                                    <option value="500">500 Post Share</option>
+                                    <option value="750">750 Post Share</option>
+                                    <option value="1000">1000 Post Share</option>
+                                    <option value="5000">5000 Post Share</option>
+                                    <option value="10000">10000 Post Share</option>
+                                    <option value="50000">50000 Post Share</option>
+                                    <option value="other">Other</option>
                                 </select>
                                 
                             </div>
-                            <div class="order-price mt-5">
-                                <h4 class="text-left">Price: <input class="form-control d-inline w-25 text-danger text-center" type="text" value="₦0.00" id="show_only" disabled=""></h4>
+                            <div class="pay">
+
+                            </div>
+                            <div class="form-group">
+                                <h4 class="text-left">Price: <input class="form-control d-inline w-25 text-danger text-center" type="text" name="price" value="₦0.00" id="show_only" readonly required></h4>
                             </div>
                             <div class="form-group text-left">
                                 <button type="submit" class="btn secondary-solid-btn mt-3" style="pointer-events: all; cursor: pointer;">
@@ -70,13 +71,70 @@
                                     </button>
                             </div>
                         </form>
-
-
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <!--contact us promo end-->
+    <!--jQuery-->
+    <script src="{{ asset('js/jquery-3.5.0.min.js') }}"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ()
+        {
+            jQuery('select[name="quantity"]').on('change',function(){
+               var ID = jQuery(this).val();
+               if(ID == '100'){
+                var price = "₦1500";
+               }
+               else if (ID == '200'){
+                var price = "₦3000";
+               }
+               else if (ID == '300'){
+                var price = "₦5000";
+               }
+               else if (ID == '500'){
+                var price = "₦8000";
+               }
+               else if (ID == '750'){
+                var price = "₦12000";
+               }
+               else if (ID == '1000'){
+                var price = "₦16000";
+               }
+               else if (ID == '5000'){
+                var price = "₦80000";
+               }
+               else if (ID == '1000'){
+                var price = "₦160000";
+               }
+               else if (ID == '50000'){
+                var price = "₦800000";
+               }
+
+               if(ID == 'other')
+               {
+                   $('.pay').html('<div class="form-group"><label class="d-block mb-2 text-dark text-left">Any Other Quantity *</label><input class="form-control w-50" type="number" name="quantity" id="search" placeholder="Input Post Share Quantity" required></div>');
+                   $('#show_only').val(this.price);      
+               }
+                else
+               {
+                  $('#show_only').val(price);
+                  $('.pay').empty();
+               }
+            });
+        });
+    </script>
+     <script>
+        jQuery(document).ready(function ()
+        {
+            jQuery(document).on('keyup', '#search', function(){
+               var ID = (jQuery(this).val() * 15);
+               var data = "₦" + ID;
+               
+                $('#show_only').val(data);      
+            });
+        });
+    </script>
 
 @endsection
