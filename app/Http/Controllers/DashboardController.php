@@ -28,6 +28,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        if()
+            
         $user = Auth::user();
         
         $orders = Order::where('user_id', $user->id)->get();
