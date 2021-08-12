@@ -211,7 +211,7 @@
                         <a href="#" class="dropdown-toggle">{{ Auth::user()->name }}</a>
                         <ul class="sub-menu">
                             <li><a href="{{ route('home') }}">Dashboard</a></li>
-                            <li><a href="{{ route('home') }}">Profile</a></li>
+                            <li><a href="{{ route('profile') }}">Profile</a></li>
                             <li>
                                 <a href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
