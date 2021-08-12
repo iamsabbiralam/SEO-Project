@@ -19,7 +19,10 @@ class OrderController extends Controller
     protected $redirectTo = '/home';
 
     public function order (Request $data) {
-
+        if(Auth::user()->status == "deactivate") {
+            return view('users.deactivate');
+        }
+        
          $data->validate([
             'name' => 'required',
             'link' => 'required',

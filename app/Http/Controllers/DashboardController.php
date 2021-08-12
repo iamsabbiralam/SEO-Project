@@ -28,8 +28,10 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        if()
-            
+        if(Auth::user()->status == "deactivate") {
+            return view('users.deactivate');
+        }
+
         $user = Auth::user();
         
         $orders = Order::where('user_id', $user->id)->get();
@@ -39,6 +41,9 @@ class DashboardController extends Controller
 
     public function profile()
     {
+        if(Auth::user()->status == "deactivate") {
+            return view('users.deactivate');
+        }
         return view('users.profile');
     }
 
