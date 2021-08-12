@@ -68,7 +68,14 @@ Route::get('/youtube_views_order', [UserController::class, 'youtube_views_order'
 
 Route::post('/order', [OrderController::class, 'order'])->name('order');
 
+// admin route
 Route::get('admin/home', [DashboardController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
 Route::get('admin/orders', [AdminController::class, 'orders'])->name('admin.order')->middleware('is_admin');
 Route::get('admin/users', [AdminController::class, 'users'])->name('admin.user')->middleware('is_admin');
 Route::get('admin/admins', [AdminController::class, 'admins'])->name('admin.admin')->middleware('is_admin');
+Route::get('admin/newadmin', [AdminController::class, 'addadmin'])->name('admin.add')->middleware('is_admin');
+Route::post('admin/newadmin', [AdminController::class, 'proadmin'])->name('admin.pro')->middleware('is_admin');
+Route::get('admin/deleteadmin/{id}', [AdminController::class, 'deleteadmin'])->name('admin.delete')->middleware('is_admin');
+// javascript
+Route::get('admin/users/status/{id}/{status}', [AdminController::class, 'userstatus'])->middleware('is_admin');
+Route::get('admin/order/status/{id}/{status}', [AdminController::class, 'orderstatus'])->middleware('is_admin');

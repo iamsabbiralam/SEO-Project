@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Admin Details')
+@section('title', 'Add admin')
 
 @section('container')
 
@@ -8,14 +8,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Admin Details</h1>
+                <h1 class="m-0">Add admin</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Admin</a></li>
-                    <li class="breadcrumb-item active">
-                        <a href="{{ route('admin.add') }}">Add admin</a>
-                    </li>
+                    <li class="breadcrumb-item active">New Admin</li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -46,29 +44,27 @@
                         <div class="col-md-12">
                             <!-- DATA TABLE-->
                             <div class="table-responsive m-b-40">
-                                <table id="example2" class="table table-bordered table-hover">
-                                    <thead align="center">
+                                <form action="{{ route('admin.pro') }}" method="post">
+                                    @csrf
+                                    <table id="example2" class="table table-bordered table-hover">
                                         <tr>
-                                            <th>Admin Name</th>
-                                            <th>Admin Email</th>
-                                            <th>Action</th>
+                                            <td>Name:</td>
+                                            <td><input type="text" name="name"></td>
                                         </tr>
-                                    </thead>
-                                    <tbody align="center">
-                                        @foreach($users as $user)
                                         <tr>
-                                            <td>{{ $user->name }}</td>
-                                            <td>{{ $user->email }}</td>
-                                            <td>
-                                                @if($user->id != "1")
-                                                <a href="{{ route('admin.delete', [ 'id' => $user->id ]) }}"><i
-                                                        class="far fa-trash-alt" style="color:red"></i></a>
-                                                @endif
-                                            </td>
+                                            <td>Email:</td>
+                                            <td><input type="email" name="email"></td>
                                         </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                                        <tr>
+                                            <td>Password:</td>
+                                            <td><input type="password" name="password"></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td><input type="submit" value="Submit"></td>
+                                        </tr>
+                                    </table>
+                                </form>
                             </div>
                             <!-- END DATA TABLE-->
                         </div>

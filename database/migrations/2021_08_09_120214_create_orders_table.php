@@ -21,6 +21,7 @@ class CreateOrdersTable extends Migration
             $table->string('quantity');
             $table->string('price');
             $table->string('status')->default('pending');
+            $table->string('show')->default('0');
             $table->timestamps();
         });
     }

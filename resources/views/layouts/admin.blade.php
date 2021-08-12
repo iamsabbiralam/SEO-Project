@@ -36,7 +36,8 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li>
-                    <a class="nav-link" href="{{ route('admin.home') }}" role="button">Welcome {{ Auth::user()->name }}</a>
+                    <a class="nav-link" href="{{ route('admin.home') }}" role="button">Welcome
+                        {{ Auth::user()->name }}</a>
                 </li>
             </ul>
 
@@ -111,19 +112,31 @@
                                 </p>
                             </a>
                         </li>
+                        @php
+                        $user = DB::table('users')->where('is_admin', 0)->where('show', 0)->get();
+                        @endphp
                         <li class="nav-item menu-open">
                             <a href="{{ route('admin.user') }}" class="nav-link active">
                                 <i class="nav-icon fa fa-users" aria-hidden="true"></i>
                                 <p>
                                     User List
+                                    @if(count($user) > 0)
+                                    <span style="color:black;font-size:22px;">({{ count($user) }})</span>
+                                    @endif
                                 </p>
                             </a>
                         </li>
+                        @php
+                        $order = DB::table('orders')->where('show', 0)->get();
+                        @endphp
                         <li class="nav-item menu-open">
                             <a href="{{ route('admin.order') }}" class="nav-link active">
                                 <i class="nav-icon fab fa-first-order"></i>
                                 <p>
                                     Order Details
+                                    @if(count($order) > 0)
+                                    <span style="color:black;font-size:22px;">({{ count($order) }})</span>
+                                    @endif
                                 </p>
                             </a>
                         </li>
@@ -155,8 +168,8 @@
         </aside>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-        @section('container')
-        @show
+            @section('container')
+            @show
         </div>
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
@@ -166,7 +179,7 @@
 
         <!-- Main Footer -->
         <footer class="main-footer">
-            <strong>&copy; All Rights Reserved by  2021</a></strong>
+            <strong>&copy; All Rights Reserved by 2021</a></strong>
             <div class="float-right d-none d-sm-inline-block">
                 <b>Version</b> 1.1.0
             </div>
