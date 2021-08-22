@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -82,3 +83,7 @@ Route::get('admin/deleteadmin/{id}', [AdminController::class, 'deleteadmin'])->n
 // javascript
 Route::get('admin/users/status/{id}/{status}', [AdminController::class, 'userstatus'])->middleware('is_admin');
 Route::get('admin/order/status/{id}/{status}', [AdminController::class, 'orderstatus'])->middleware('is_admin');
+
+// payment gateway
+Route::any('/paymentpage', [PaymentController::class, 'index']);
+Route::any('verifypayment/{transaction_id}', [paymetnController::class, 'verify']);

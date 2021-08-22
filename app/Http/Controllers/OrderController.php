@@ -38,6 +38,6 @@ class OrderController extends Controller
             'price' => $data['price'],
         ]);
 
-        return redirect('/home');
+        return redirect('/paymentpage');
     }
 }

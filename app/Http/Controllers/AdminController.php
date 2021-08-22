@@ -19,7 +19,7 @@ class AdminController extends Controller
     {   
         Order::where('show', 0)->update(['show'=> 1]);
         
-        $orders = Order::all();
+        $orders = Order::where('status','<>','pending')->get();
 
         return view('admin.orders', ['orders' => $orders]);
     }

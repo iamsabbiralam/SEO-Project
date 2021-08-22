@@ -76,6 +76,8 @@
                                                         @endif>Pending</option>
                                                     <option value="cancel" @if($order->status == "cancel") selected
                                                         @endif>Cancel</option>
+                                                    <option value="done" @if($order->status == "done") selected
+                                                    @endif>Done</option>
                                                 </select>
                                             </td>
                                         </tr>
