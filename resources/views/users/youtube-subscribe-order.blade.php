@@ -82,25 +82,25 @@
             jQuery('select[name="quantity"]').on('change',function(){
                var ID = jQuery(this).val();
                if(ID == '100'){
-                var price = "₦4000";
+                var price = "4000";
                }
                else if (ID == '500'){
-                var price = "₦20000";
+                var price = "20000";
                }
                else if (ID == '1000'){
-                var price = "₦40000";
+                var price = "40000";
                }
                else if (ID == '10000'){
-                var price = "₦350000";
+                var price = "350000";
                }
                else if (ID == '20000'){
-                var price = "₦700000";
+                var price = "700000";
                }
                else if (ID == '50000'){
-                var price = "₦1400000";
+                var price = "1400000";
                }
                else if (ID == '100000'){
-                var price = "₦2700000";
+                var price = "2700000";
                }
 
                if(ID == 'other')
@@ -121,7 +121,7 @@
         {
             jQuery(document).on('keyup', '#search', function(){
                var ID = (jQuery(this).val() * 40);
-               var data = "₦" + ID;
+               var data = ID;
                
                 $('#show_only').val(data);      
             });

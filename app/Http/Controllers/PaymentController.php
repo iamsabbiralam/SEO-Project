@@ -4,16 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Order;
 
 class PaymentController extends Controller
 {
     //
-    public function index(Request $request) {
+    public function index(Request $request, $id) {
 
-        return view("payment.pay");
+        $order = Order::find($id);
+
+        return view("payment.pay", ['order' => $order]);
     }
 
-    public function verify(Request $request) {
+    public function verify(Request $request, $id) {
 
         $curl = curl_init();
 
@@ -33,6 +36,10 @@ class PaymentController extends Controller
         ));
 
         $response = curl_exec($curl);
+
+        if($response){
+            Order::where('id',$id)->update(['status' => 'approved']);
+        }
 
         curl_close($curl);
         $res = json_decode($response);

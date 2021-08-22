@@ -85,5 +85,5 @@ Route::get('admin/users/status/{id}/{status}', [AdminController::class, 'usersta
 Route::get('admin/order/status/{id}/{status}', [AdminController::class, 'orderstatus'])->middleware('is_admin');
 
 // payment gateway
-Route::any('/paymentpage', [PaymentController::class, 'index']);
-Route::any('verifypayment/{transaction_id}', [paymetnController::class, 'verify']);
+Route::any('/paymentpage/{id}', [PaymentController::class, 'index']);
+Route::any('verifypayment/{transaction_id}/{id}', [paymetnController::class, 'verify']);

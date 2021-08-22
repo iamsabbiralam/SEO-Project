@@ -38,6 +38,8 @@ class OrderController extends Controller
             'price' => $data['price'],
         ]);
 
-        return redirect('/paymentpage');
+        $order = Order::orderBy('id', 'desc')->first()->id;
+
+        return redirect('/paymentpage/'.$order);
     }
 }

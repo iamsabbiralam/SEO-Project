@@ -44,6 +44,7 @@
                         @endif
                         <form id="makePaymentForm">
                             @csrf
+                            <input type="hidden" name="id" id="id" value="{{ $order->id }}" required>
                             <div class="form-group">
                                 <label class="d-block mb-2 text-dark text-left">Name*</label>
                                 <input class="form-control w-50" type="text" name="name" id="name" placeholder="Enter your Name" required>
@@ -54,11 +55,11 @@
                             </div>
                             <div class="form-group">
                                 <label class="d-block mb-2 text-dark text-left">Amount*</label>
-                                <input class="form-control w-50" type="number" name="amount" id="amount"  placeholder="Enter Amount" required>
+                                <input class="form-control w-50" type="text" name="amount" id="amount"  value="{{ $order->price }}" required readonly>
                             </div>
                             <div class="form-group">
                                 <label class="d-block mb-2 text-dark text-left">Mobile No.*</label>
-                                <input class="form-control w-50" type="number" name="mobile" id="mobile"  placeholder="Enter Mobile No." required>
+                                <input class="form-control w-50" type="tel" name="mobile" id="mobile"  placeholder="Enter Mobile No." required>
                             </div>
                             <div class="d-block mb-2 text-dark text-left">
                                 <button type="submit" class="btn secondary-solid-btn mt-3" style="pointer-events: all; cursor: pointer;">Pay Now</button>
@@ -108,9 +109,10 @@
             var transaction_id = data.transaction_id;
             // make ajax request
             var _token = $("input[name='_token']").val();
+            var ID = $("input[name='id']").val();
             $.ajax({
                 type: "post",
-                url: "{{URL::to('verifypayment')}}",
+                url: "{{URL::to('verifypayment')}}/'+ID",
                 data: {
                     transaction_id,
                     _token
@@ -132,4 +134,5 @@
         });
       }
     </script>
+
 @endsection
